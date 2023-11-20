@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUI_Aplicacion.ProductoPage"
-             Title="NewPage1">
+             Title="ProductoPage">
     <VerticalStackLayout>
         <HorizontalStackLayout BackgroundColor="Aqua">
             <Image
@@ -22,7 +22,8 @@
             FontSize="20"
             Clicked="OnClickNuevoProducto"/>
         <ListView x:Name="listaProductos"
-                  RowHeight="80">
+                  RowHeight="80"
+                  ItemSelected="OnClickShowDetails">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

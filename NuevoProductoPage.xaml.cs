@@ -5,13 +5,31 @@ namespace MAUI_Aplicacion;
 
 public partial class NuevoProductoPage : ContentPage
 {
+    private Producto _producto;
 	public NuevoProductoPage()
 	{
-		InitializeComponent();
-		
+		InitializeComponent();		
     }
-	private void OnAgregarProductoClicked(object sender, EventArgs e)
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        _producto = BindingContext as Producto;
+        if (_producto != null )
+        {
+            Nombre.Text = _producto.Nombre;
+            Cantidad.Text = _producto.Cantidad.ToString();
+            Descripcion.Text = _producto.Descripcion;
+        }
+    }
+    private async void OnAgregarProductoClicked(object sender, EventArgs e)
 	{
+        if(_producto != null)
+        {
+            _producto.Nombre = Nombre.Text;
+            _producto.Descripcion= Descripcion.Text;
+            _producto.Cantidad = Convert.ToInt32(Cantidad.Text);
+        }
+        else { 
         string nombre = Nombre.Text;
         int cantidad = Convert.ToInt32(Cantidad.Text);
         string descripcion = Descripcion.Text;
@@ -23,5 +41,12 @@ public partial class NuevoProductoPage : ContentPage
             Descripcion = descripcion,
             IdProducto = id
         });
+        }
+        await Navigation.PopModalAsync();
+    }
+
+    private async void OnCancelarClicked(object sender, EventArgs e)
+    {
+        await Navigation.PopModalAsync();
     }
 }

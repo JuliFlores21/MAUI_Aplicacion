@@ -11,6 +11,9 @@
         <Entry Placeholder="Ingrese la cantidad" x:Name="Cantidad" Keyboard="Numeric" />
         <Label Text="Descripción:" />
         <Editor Placeholder="Ingrese la descripción" x:Name="Descripcion" />
-        <Button Text="Agregar Producto" Clicked="OnAgregarProductoClicked" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+        <HorizontalStackLayout>
+            <Button Text="Cancelar" Clicked="OnCancelarClicked" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+            <Button Text="Guardar Producto" Clicked="OnAgregarProductoClicked" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+        </HorizontalStackLayout>
     </StackLayout>
 </ContentPage>
